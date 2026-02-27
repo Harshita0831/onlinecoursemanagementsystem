@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Courses</h1>
+
+<div class="dashboard-grid">
+
+    {% for course in courses %}
+        <div class="dash-card">
+            <h3>
+                <a href="{% url 'course-detail' course.id %}">
+                    {{ course.title }}
+                </a>
+            </h3>
+
+            <p>{{ course.description|truncatewords:15 }}</p>
+            <p><strong>Level:</strong> {{ course.level }}</p>
+            <p><strong>Price:</strong> ₹ {{ course.price }}</p>
+        </div>
+    {% empty %}
+        <p>No courses available</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

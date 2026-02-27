@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Welcome to OCMS</h1>
+<p>Your Online Course Management System</p>
+
+<div class="dash-card">
+    <h3>Explore Courses</h3>
+    <p>Browse and enroll in professional courses</p>
+    <a href="{% url 'courses' %}">View Courses →</a>
+</div>
+
+{% endblock %}

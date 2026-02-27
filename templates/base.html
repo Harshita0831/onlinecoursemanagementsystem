@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OCMS</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <h2 class="logo">OCMS</h2>
+    </div>
+
+    <ul class="nav-links">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'courses' %}">Courses</a></li>
+    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+
+    {% if user.is_authenticated %}
+        <li>Hi, {{ user.username }}</li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+</ul>
+</nav>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

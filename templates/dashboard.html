@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Dashboard</h1>
+
+<div class="dashboard-grid">
+
+    <div class="dash-card">
+        <h3>Total Courses</h3>
+        <p>{{ total_courses }}</p>
+    </div>
+
+    <div class="dash-card">
+        <h3>Total Modules</h3>
+        <p>{{ total_modules }}</p>
+    </div>
+
+    <div class="dash-card">
+        <h3>Total Lectures</h3>
+        <p>{{ total_lectures }}</p>
+    </div>
+
+    <div class="dash-card">
+        <h3>Students</h3>
+        <p>{{ students }}</p>
+    </div>
+
+</div>
+
+
+<h2 style="margin-top:40px;">My Courses</h2>
+
+<div class="dashboard-grid">
+    {% for enrollment in enrolled_courses %}
+        <div class="dash-card">
+            <h3>{{ enrollment.course.title }}</h3>
+            <p>Status: {{ enrollment.status }}</p>
+
+            <a href="{% url 'course-detail' enrollment.course.id %}">
+                Go to course →
+            </a>
+        </div>
+    {% empty %}
+        <p>You have not enrolled in any courses yet.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

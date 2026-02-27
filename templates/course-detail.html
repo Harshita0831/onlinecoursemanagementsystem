@@ -1,0 +1,13 @@
+{% if user.is_authenticated %}
+    {% if is_enrolled %}
+        <span class="badge">✔ Already Enrolled</span>
+    {% else %}
+        <a href="{% url 'enroll-course' course.id %}" class="enroll-btn">
+            Enroll Now
+        </a>
+    {% endif %}
+{% else %}
+    <a href="{% url 'login' %}" class="enroll-btn">
+        Login to Enroll
+    </a>
+{% endif %}
